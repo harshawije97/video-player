@@ -1,7 +1,7 @@
-"use client"
-import { useState, useEffect } from 'react';
-import { Video } from '../types/video';
-import Image from 'next/image';
+"use client";
+import { useState, useEffect } from "react";
+import { Video } from "../types/video";
+import Image from "next/image";
 
 interface VideoListProps {
   onVideoSelect: (videoUrl: string) => void;
@@ -15,14 +15,14 @@ const VideoList = ({ onVideoSelect }: VideoListProps) => {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await fetch('/api/videos');
+        const response = await fetch("/api/videos");
         if (!response.ok) {
-          throw new Error('Failed to fetch videos');
+          throw new Error("Failed to fetch videos");
         }
         const data = await response.json();
         setVideos(data);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
+        setError(err instanceof Error ? err.message : "An error occurred");
       } finally {
         setLoading(false);
       }
@@ -44,15 +44,16 @@ const VideoList = ({ onVideoSelect }: VideoListProps) => {
       <h2 className="text-xl font-semibold mb-4">Available Videos</h2>
       <div className="space-y-4">
         {videos.map((video) => (
-          <div 
-            key={video.id} 
+          <div
+            key={video.id}
             className="p-3 border rounded-md bg-white hover:bg-gray-50 cursor-pointer transition-colors"
             onClick={() => onVideoSelect(video.src)}
           >
             <div className="flex items-center space-x-3">
               <div className="w-20 h-12 relative">
                 {video.thumbnail && (
-                  <img 
+                  <Image
+                    fill
                     src={video.thumbnail}
                     alt={video.title}
                     className="object-cover rounded"
@@ -61,7 +62,9 @@ const VideoList = ({ onVideoSelect }: VideoListProps) => {
               </div>
               <div>
                 <h3 className="font-medium">{video.title}</h3>
-                <p className="text-sm text-gray-500 line-clamp-1">{video.description}</p>
+                <p className="text-sm text-gray-500 line-clamp-1">
+                  {video.description}
+                </p>
               </div>
             </div>
           </div>

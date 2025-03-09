@@ -12,6 +12,7 @@ export default function Home() {
   };
 
   console.log(videoUrl);
+  
   return (
     <main className="min-h-screen bg-gray-100">
       <div className="grid grid-cols-[30vw_70vw] gap-4`">

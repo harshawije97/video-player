@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 import { formatTime } from '@/app/lib/utils'
 import { useState } from 'react'

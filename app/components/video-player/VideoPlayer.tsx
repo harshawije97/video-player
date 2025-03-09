@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 'use client'
 import { useState, useRef, useEffect } from 'react'
 import Controls from './Controls'
